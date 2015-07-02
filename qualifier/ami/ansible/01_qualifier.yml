@@ -11,6 +11,7 @@
     - yum: pkg=mariadb* state=absent
     - yum: pkg=nginx state=installed
     - service: name=nginx enabled=true
+    - yum: pkg=mysql-devel state=installed
     - yum: pkg=mysql-server state=installed
     - service: name=mysqld state=running enabled=true
     - yum: pkg=MySQL-python state=installed
