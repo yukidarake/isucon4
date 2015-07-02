@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  remote_user: ec2-user
+  remote_user: vagrant
   sudo: yes
   tasks:
     - shell: rm -rf /tmp/*; true
@@ -8,9 +8,9 @@
       args:
         removes: /var/log/nginx/access.log
     - file: path=/var/log/mysqld.log state=absent
-    - file: path=/home/ec2-user/.ansible state=absent
-    - file: path=/home/ec2-user/.bash_history state=absent
-    - file: path=/home/ec2-user/.viminfo state=absent
+    - file: path=/home/vagrant/.ansible state=absent
+    - file: path=/home/vagrant/.bash_history state=absent
+    - file: path=/home/vagrant/.viminfo state=absent
     - file: path=/home/isucon/.mysql_history state=absent
     - file: path=/home/isucon/.bash_history state=absent
 

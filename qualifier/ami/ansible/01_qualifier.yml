@@ -1,11 +1,14 @@
 ---
 - hosts: all
-  remote_user: ec2-user
+  remote_user: vagrant
   sudo: yes
   tasks:
     - user: name=isucon groups=wheel
     - lineinfile: dest=/etc/sudoers state=present regexp='^%wheel ALL\=' line='%wheel ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s'
     - command: yum update -y
+    - yum: name=epel-release state=present
+    - yum: name=http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm state=present
+    - yum: pkg=mariadb* state=absent
     - yum: pkg=nginx state=installed
     - service: name=nginx enabled=true
     - yum: pkg=mysql-server state=installed

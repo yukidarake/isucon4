@@ -1,8 +1,9 @@
 ---
 - hosts: all
-  remote_user: ec2-user
+  remote_user: vagrant
   sudo: yes
   tasks:
+    - yum: pkg=epel-release state=installed
     - yum: pkg=git state=installed
     - yum: pkg=gcc state=installed
     - yum: pkg=patch state=installed
